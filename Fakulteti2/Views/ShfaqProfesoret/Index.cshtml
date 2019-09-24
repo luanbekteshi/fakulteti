@@ -1,0 +1,85 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+   
+    <div class="container">
+        <br />
+        <h2>Profesoret</h2>
+
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id Profesorit</th>
+                <th scope="col">Emri Profesorit</th>
+                <th scope="col">Mbiemri Profesorit</th>
+                <th scope="col">Titulli akademik</th>
+                <th scope="col">Nr Telefonit</th>
+                <th scope="col">Email</th>
+                <th scope="col">Lenda qe ligjeron</th>
+            </tr>
+        </thead>
+        <tbody id="table"></tbody>
+    </table>
+</body>
+
+<footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.js"></script>
+
+    <script>
+
+        let shto;
+        $('document').ready(() => {
+            $.ajax({
+                url: 'http://localhost:64045/api/getprofesori',
+                method: 'GET',
+                dataType: 'json',
+
+                success: (result) => {
+                    shto = result;
+                    for (let i = 0; i < result.length; i++) {
+                        $('#table').prepend(`
+                        <tr class= "${result[i]}">
+
+
+                            <td>${result[i].id_p}</td>
+                            <td>${result[i].emri_p}</td>
+                            <td>${result[i].mbiemri_p}</td>
+                            <td>${result[i].titulli_p}</td>
+                            <td>${result[i].nrtel_p}</td>
+                            <td>${result[i].email_p}</td>
+                            <td>${result[i].emri_l}</td>
+
+                    </tr>
+                 `)
+                    }
+                },
+                error: (err) => {
+                    prompt(err);
+                }
+
+            })
+        })
+
+
+    </script>
+</footer>
+</html>

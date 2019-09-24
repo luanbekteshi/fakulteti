@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="vwProfesoriDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FakultetiDb.dbo.vw_profesori' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_profesori">
+          <Key>
+            <PropertyRef Name="id_p" />
+            <PropertyRef Name="emri_p" />
+            <PropertyRef Name="mbiemri_p" />
+          </Key>
+          <Property Name="id_p" Type="int" Nullable="false" />
+          <Property Name="emri_p" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="mbiemri_p" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="titulli_p" Type="varchar" MaxLength="30" />
+          <Property Name="nrtel_p" Type="varchar" MaxLength="50" />
+          <Property Name="email_p" Type="varchar" MaxLength="100" />
+          <Property Name="emri_l" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityContainer Name="vwProfesoriDbModelStoreContainer">
+          <EntitySet Name="vw_profesori" EntityType="Self.vw_profesori" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_profesori].[id_p] AS [id_p], 
+    [vw_profesori].[emri_p] AS [emri_p], 
+    [vw_profesori].[mbiemri_p] AS [mbiemri_p], 
+    [vw_profesori].[titulli_p] AS [titulli_p], 
+    [vw_profesori].[nrtel_p] AS [nrtel_p], 
+    [vw_profesori].[email_p] AS [email_p], 
+    [vw_profesori].[emri_l] AS [emri_l]
+    FROM [dbo].[vw_profesori] AS [vw_profesori]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="vwProfesoriDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="vw_profesori">
+          <Key>
+            <PropertyRef Name="id_p" />
+            <PropertyRef Name="emri_p" />
+            <PropertyRef Name="mbiemri_p" />
+          </Key>
+          <Property Name="id_p" Type="Int32" Nullable="false" />
+          <Property Name="emri_p" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mbiemri_p" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="titulli_p" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="nrtel_p" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email_p" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="emri_l" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="vwProfesoriDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="vw_profesori" EntityType="Self.vw_profesori" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="vwProfesoriDbModelStoreContainer" CdmEntityContainer="vwProfesoriDbEntities">
+          <EntitySetMapping Name="vw_profesori">
+            <EntityTypeMapping TypeName="vwProfesoriDbModel.vw_profesori">
+              <MappingFragment StoreEntitySet="vw_profesori">
+                <ScalarProperty Name="id_p" ColumnName="id_p" />
+                <ScalarProperty Name="emri_p" ColumnName="emri_p" />
+                <ScalarProperty Name="mbiemri_p" ColumnName="mbiemri_p" />
+                <ScalarProperty Name="titulli_p" ColumnName="titulli_p" />
+                <ScalarProperty Name="nrtel_p" ColumnName="nrtel_p" />
+                <ScalarProperty Name="email_p" ColumnName="email_p" />
+                <ScalarProperty Name="emri_l" ColumnName="emri_l" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

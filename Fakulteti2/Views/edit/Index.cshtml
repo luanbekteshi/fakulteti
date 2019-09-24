@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Issues</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <!--Shto Studentin column -->
+            <div class="col-md-6">
+                <h1>Ndrysho te dhenat!!</h1>
+                <div class="form-group">
+                    <label for="Id">Id</label>
+                    <input type="number" class="form-control" id="Id" placeholder="Vendos ID">
+                </div>
+                <div class="form-group">
+                    <label for="Emri">Emri</label>
+                    <input type="text" class="form-control" id="Emri" placeholder="Emri i profesorit">
+                </div>
+                <div class="form-group">
+                    <label for="Mbiemri">Mbiemri</label>
+                    <input type="text" class="form-control" id="Mbiemri" placeholder="Mbiemri i profesorit">
+                </div>
+                <div class="form-group">
+                    <label for="Komuna">Titulli</label>
+                    <input type="text" class="form-control" id="titulli" placeholder="Titulli akademik">
+                </div>
+                <div class="form-group">
+                    <label for="Nr_telefonit">Nr_telefonit</label>
+                    <input type="text" class="form-control" id="Nr_telefonit" placeholder="Numri i telefonit">
+                </div>
+                <div class="form-group">
+                    <label for="Drejtimi">email</label>
+                    <input type="text" class="form-control" id="email" placeholder="email">
+                </div>
+                <button id="ndryshoProf" type="submit" class="btn btn-primary">Ndrysho</button>
+            </div>
+
+</body>
+<footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+
+
+
+
+    <script>
+            const API_URL = 'http://localhost:64045/api/profesori/';
+
+        let issues;
+
+        var id = document.getElementById('Id').value;
+        var emri = document.getElementById('Emri');
+        var mbiemri = document.getElementById('Mbiemri');
+        var titulli = document.getElementById('titulli');
+        var nrtel = document.getElementById('Nr_telefonit');
+        var email = document.getElementById('email');
+
+            $(document).on('click', '#ndryshoProf', (event) => {
+                
+                //objekti qe do te ndryshohet
+                let obj = {
+
+                    emri_p: $('#Emri').val(),
+                    mbiemri_p: $('#Mbiemri').val(), 
+                    titulli_p: $('#titulli').val(),
+                    nrtel_p: $('#Nr_telefonit').val(),
+                    email_p: $('#email').val(),
+
+                };
+                //metoda put
+                $.ajax({
+                    url: API_URL + $('#Id').val(),
+
+                    method: 'PUT',
+                    dataType:'json',
+                    data: obj,
+                    success: (res) => {
+                        
+                        alert("te dhenat u ndryshuan me sukses!!");
+                        document.location.reload(res);
+                    },
+                    error: (err) => {
+                        alert("Profesori me id " + $('#Id').val() + " nuk u gjet");
+                    }
+                });
+            })
+
+
+        </script>
+</footer>
+
+</html>

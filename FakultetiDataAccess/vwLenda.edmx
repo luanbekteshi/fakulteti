@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="vwLendetDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FakultetiDb.dbo.vw_Lendet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_Lendet">
+          <Key>
+            <PropertyRef Name="id_l" />
+            <PropertyRef Name="emri_l" />
+          </Key>
+          <Property Name="id_l" Type="int" Nullable="false" />
+          <Property Name="emri_l" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ligjerata" Type="int" />
+          <Property Name="ushtrime" Type="int" />
+          <Property Name="ects" Type="int" />
+          <Property Name="id_p" Type="int" />
+          <Property Name="emri_p" Type="varchar" MaxLength="100" />
+          <Property Name="mbiemri_p" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="vwLendetDBModelStoreContainer">
+          <EntitySet Name="vw_Lendet" EntityType="Self.vw_Lendet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_Lendet].[id_l] AS [id_l], 
+    [vw_Lendet].[emri_l] AS [emri_l], 
+    [vw_Lendet].[ligjerata] AS [ligjerata], 
+    [vw_Lendet].[ushtrime] AS [ushtrime], 
+    [vw_Lendet].[ects] AS [ects], 
+    [vw_Lendet].[id_p] AS [id_p], 
+    [vw_Lendet].[emri_p] AS [emri_p], 
+    [vw_Lendet].[mbiemri_p] AS [mbiemri_p]
+    FROM [dbo].[vw_Lendet] AS [vw_Lendet]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="vwLendetDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="vw_Lendet">
+          <Key>
+            <PropertyRef Name="id_l" />
+            <PropertyRef Name="emri_l" />
+          </Key>
+          <Property Name="id_l" Type="Int32" Nullable="false" />
+          <Property Name="emri_l" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ligjerata" Type="Int32" />
+          <Property Name="ushtrime" Type="Int32" />
+          <Property Name="ects" Type="Int32" />
+          <Property Name="id_p" Type="Int32" />
+          <Property Name="emri_p" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="mbiemri_p" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="vwLendetDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="vw_Lendet" EntityType="Self.vw_Lendet" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="vwLendetDBModelStoreContainer" CdmEntityContainer="vwLendetDbEntities">
+          <EntitySetMapping Name="vw_Lendet">
+            <EntityTypeMapping TypeName="vwLendetDBModel.vw_Lendet">
+              <MappingFragment StoreEntitySet="vw_Lendet">
+                <ScalarProperty Name="id_l" ColumnName="id_l" />
+                <ScalarProperty Name="emri_l" ColumnName="emri_l" />
+                <ScalarProperty Name="ligjerata" ColumnName="ligjerata" />
+                <ScalarProperty Name="ushtrime" ColumnName="ushtrime" />
+                <ScalarProperty Name="ects" ColumnName="ects" />
+                <ScalarProperty Name="id_p" ColumnName="id_p" />
+                <ScalarProperty Name="emri_p" ColumnName="emri_p" />
+                <ScalarProperty Name="mbiemri_p" ColumnName="mbiemri_p" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
